@@ -18,11 +18,19 @@ for index, row in df.iterrows():
             pdf.cell(w=0, h=24, txt=row["Topic"], align="L", ln=1)
             pdf.line(x1=10, y1=27, x2=200, y2=27)
 
+            # Add writing lines
+            for y in range(36, 280, 8):
+                pdf.line(10, y, 200, y)
+
             # Set the footer for first page of each topic
             pdf.ln(250)
             pdf.set_font(family="Times", style="I", size=8)
             pdf.set_text_color(200, 200, 200)
             pdf.cell(w=0, h=10, txt=row["Topic"], align="R")
+
+        # Add writing lines
+        for y in range(36, 280, 8):
+            pdf.line(10, y, 200, y)
 
         # Set the footer for rest pages of topic
         pdf.ln(274)
@@ -30,4 +38,4 @@ for index, row in df.iterrows():
         pdf.set_text_color(200, 200, 200)
         pdf.cell(w=0, h=10, txt=row["Topic"], align="R")
 
-pdf.output("output.pdf")
+pdf.output("output-lined.pdf")
